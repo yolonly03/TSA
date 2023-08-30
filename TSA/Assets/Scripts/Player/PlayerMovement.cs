@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -30,6 +31,9 @@ public class PlayerMovement : MonoBehaviour
     private BoxCollider2D boxCollider;
     private float wallJumpCooldown;
     private float horizontalInput;
+    public Text WINTEX;
+    public GameObject backMenu;
+    
 
     private void Awake()
     {
@@ -83,7 +87,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Jump()
     {
-        if (coyoteCounter <= 0 && !onWall() && jumpCounter <= 0) return; 
+        if (coyoteCounter <= 0 && !onWall() && jumpCounter <= 0) return;
         //If coyote counter is 0 or less and not on the wall and don't have any extra jumps don't do anything
 
         SoundManager.instance.PlaySound(jumpSound);
@@ -135,4 +139,16 @@ public class PlayerMovement : MonoBehaviour
     {
         return horizontalInput == 0 && isGrounded() && !onWall();
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Win")
+        {
+            
+            WINTEX.gameObject.SetActive(true);
+            backMenu.gameObject.SetActive(true);
+            Time.timeScale = 0;
+        }
+    }
+
 }

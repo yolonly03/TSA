@@ -19,9 +19,6 @@ public class RangedEnemy : MonoBehaviour
     [SerializeField] private LayerMask playerLayer;
     private float cooldownTimer = Mathf.Infinity;
 
-    [Header("Fireball Sound")]
-    [SerializeField] private AudioClip fireballSound;
-
     //References
     private Animator anim;
     private EnemyPatrol enemyPatrol;
@@ -49,10 +46,9 @@ public class RangedEnemy : MonoBehaviour
         if (enemyPatrol != null)
             enemyPatrol.enabled = !PlayerInSight();
     }
-
+     
     private void RangedAttack()
     {
-        SoundManager.instance.PlaySound(fireballSound);
         cooldownTimer = 0;
         fireballs[FindFireball()].transform.position = firepoint.position;
         fireballs[FindFireball()].GetComponent<EnemyProjectile>().ActivateProjectile();
@@ -83,3 +79,5 @@ public class RangedEnemy : MonoBehaviour
             new Vector3(boxCollider.bounds.size.x * range, boxCollider.bounds.size.y, boxCollider.bounds.size.z));
     }
 }
+
+

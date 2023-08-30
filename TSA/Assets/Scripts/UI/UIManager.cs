@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
-    [Header ("Game Over")]
+    [Header("Game Over")]
     [SerializeField] private GameObject gameOverScreen;
     [SerializeField] private AudioClip gameOverSound;
 

@@ -15,7 +15,7 @@ public class PlayerRespawn : MonoBehaviour
 
     public void RespawnCheck()
     {
-        if (currentCheckpoint == null) 
+        if (currentCheckpoint == null)
         {
             uiManager.GameOver();
             return;
@@ -34,7 +34,7 @@ public class PlayerRespawn : MonoBehaviour
             currentCheckpoint = collision.transform;
             SoundManager.instance.PlaySound(checkpoint);
             collision.GetComponent<Collider2D>().enabled = false;
-            collision.GetComponent<Animator>().SetTrigger("activate");
+            collision.GetComponent<Animator>().SetTrigger("appear");
         }
     }
 }
